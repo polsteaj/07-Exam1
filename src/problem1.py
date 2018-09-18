@@ -2,15 +2,15 @@
 Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Alec Polster.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem1a()
+    # run_test_problem1a()
     run_test_problem1b()
 
 
@@ -89,10 +89,16 @@ def problem1a(rectangle, square, thickness, window):
       :type window:    rg.RoseWindow
     """
     # --------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
-
+    rectangle.attach_to(window)
+    square.attach_to(window)
+    bob = rg.Line(square.center, rg.Point(rectangle.get_center().x, rectangle.get_center().y - (rectangle.get_height()/2)))
+    bob.thickness = thickness
+    bob.color = rectangle.outline_color
+    bob.attach_to(window)
+    window.render()
 
 def run_test_problem1b():
     """ Tests the  problem1b   function. """
@@ -149,10 +155,15 @@ def problem1b(point, win, width, height, color):
       :type color:  str
     """
     # --------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
-
+    corn1 = rg.Point(point.x - (width/2), point.y)
+    corn2 = rg.Point(corn1.x + width, corn1.y + height)
+    bob = rg.Ellipse(corn1, corn2)
+    bob.fill_color = color
+    bob.attach_to(win)
+    win.render()
 
 # ------------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
